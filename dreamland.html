@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+
+<head>
+    <title>DreamLand Maps</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script src="tiler-converter.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        /**
+         * Забираем этот объект из выдачи приложения "Подготовка слоя тайлов".
+         * @see http://api.yandex.ru/maps/doc/jsapi/1.x/dg/concepts/ymapstiler.xml
+         */
+        var options = {
+            tileUrlTemplate: "./%z/tile-%x-%y.jpg",
+            controls: {
+                typeControl: false,
+                miniMap: true,
+                toolBar: false,
+                scaleLine: false
+            },
+            scrollZoomEnabled: true,
+            mapCenter: new YMaps.GeoPoint(43.5723586595115, 56.5053420690801),
+            backgroundMapType: YMaps.MapType.NONE,
+            mapZoom: 12,
+            isTransparent: false,
+            smoothZooming: false,
+            layerKey: "my#layer",
+            mapType: {
+                name: "Карта Дримландии",
+                textColor: "#000000"
+            },
+            copyright: "",
+            /**
+             * Диапазон доступных масштабов на данном слое карты.
+             * Эти два поля приложение не генерит,
+             * их нужно дописать вручную, чтобы корректно работал ZoomControl.
+             */
+            layerMinZoom: 13,
+            layerMaxZoom: 13
+        };
+
+        ymaps.ready(function () {
+            // Передаем его в конструктор класса TilerConverter и получаем ссылку на карту.
+            var myMap = (new TilerConverter(options)).getMap();
+
+            myPlacemark = new ymaps.Placemark([56.549527, 43.600190], {hintContent: 'DEAMLAND'});
+            myPlacemark2 = new ymaps.Placemark([56.525144, 43.648985], {hintContent: 'MARU HYGIRAI'});
+            myPlacemark3 = new ymaps.Placemark([56.536251, 43.698552], {hintContent: 'CREMORRAH'});
+            myPlacemark4 = new ymaps.Placemark([56.537579, 43.634007], {hintContent: 'MERMAID ISLAND'});
+            myPlacemark5 = new ymaps.Placemark([56.539855, 43.645680], {hintContent: 'WALRILS ISLAND'});
+            myPlacemark6 = new ymaps.Placemark([56.503323, 43.584740], {hintContent: 'PUCRIFICD FORESC'});
+            myPlacemark7 = new ymaps.Placemark([56.514714, 43.525226], {hintContent: 'DEVIL`S SNOWCONE'});
+            myPlacemark8 = new ymaps.Placemark([56.539001, 43.528174], {hintContent: 'GORGE OF MANU WEACHERS'});
+            myPlacemark9 = new ymaps.Placemark([56.550765, 43.565714], {hintContent: 'ENCHANCED FORESC'});
+            myPlacemark10 = new ymaps.Placemark([56.543084, 43.570864], {hintContent: 'LOVERS` BOG'});
+
+
+            myMap.geoObjects.add(myPlacemark);
+            myMap.geoObjects.add(myPlacemark2);
+            myMap.geoObjects.add(myPlacemark3);
+            myMap.geoObjects.add(myPlacemark4);
+            myMap.geoObjects.add(myPlacemark5);
+            myMap.geoObjects.add(myPlacemark6);
+            myMap.geoObjects.add(myPlacemark7);
+            myMap.geoObjects.add(myPlacemark8);
+            myMap.geoObjects.add(myPlacemark9);
+            myMap.geoObjects.add(myPlacemark10);
+        });
+
+    </script>
+    <style type="text/css">
+        #YMapsID {
+            width: 800px;
+            height: 600px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="hero-unit">
+    <div class="container">
+        <div id="YMapsID"></div>
+    </div>
+</div>
+</body>
+</html>
