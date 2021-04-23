@@ -18,22 +18,22 @@ class MinesweeperController {
         // view.dispath();
     }
 
-    onLeftClick(obj, row, column) {
-        obj.model.openCell(row, column);
-        obj.view.syncWithModel();
-        if (obj.model.isWin()) {
-            obj.view.showWinMessage();
-            obj.startNewGame();
+    onLeftClick(row, column) {
+        this.model.openCell(row, column);
+        this.view.syncWithModel();
+        if (this.model.isWin()) {
+            this.view.showWinMessage();
+            this.startNewGame();
         } else if (obj.model.isGameOver()) {
-            obj.view.showGameOverMessage();
-            obj.startNewGame();
+            this.view.showGameOverMessage();
+            this.startNewGame();
         }
     }
 
-    onRightClick(obj, row, column) {
-        obj.model.nextCellMark(row, column);
-        obj.view.syncWithModel();
-        obj.view.blockCell(row, column, obj.model.getCell(row, column).state == 'flagged');
+    onRightClick(row, column) {
+        this.model.nextCellMark(row, column);
+        this.view.syncWithModel();
+        this.view.blockCell(row, column, this.model.getCell(row, column).state == 'flagged');
     }
 }
 

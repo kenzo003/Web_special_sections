@@ -18,7 +18,7 @@ class MinesweeperView {
         for (var i = 0; i < this.model.rowCount; i++) {
             for (var j = 0; j < this.model.columnCount; j++) {
                 var button = this.buttonsTable[i].children[j].firstChild;
-                button.onmouseup = this.callOnLeftClick.bind(null, this.controller, i, j);
+                button.onmouseup = this.callOnLeftClick.bind(this.controller, i, j);
             }
         }
     }
