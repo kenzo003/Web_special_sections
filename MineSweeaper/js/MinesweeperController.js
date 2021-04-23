@@ -24,7 +24,7 @@ class MinesweeperController {
         if (this.model.isWin()) {
             this.view.showWinMessage();
             this.startNewGame();
-        } else if (obj.model.isGameOver()) {
+        } else if (this.model.isGameOver()) {
             this.view.showGameOverMessage();
             this.startNewGame();
         }
