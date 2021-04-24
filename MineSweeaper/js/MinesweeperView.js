@@ -23,13 +23,13 @@ class MinesweeperView {
         }
     }
 
-    callOnLeftClick(obj, row,column,e) {
-       var state = obj.model.getCell(row, column).state
+    callOnLeftClick(row,column,e) {
+       var state = this.model.getCell(row, column).state;
         if (e.button == 0 && state != 'flagged'){
-            obj.onLeftClick(obj, row, column);
+            this.onLeftClick(this, row, column);
         }
         else if (e.button == 1){
-            obj.onRightClick(obj, row, column);
+            this.onRightClick(this, row, column);
         }
     }
 
